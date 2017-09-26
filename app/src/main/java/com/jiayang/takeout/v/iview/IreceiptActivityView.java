@@ -10,5 +10,5 @@ import java.util.List;
  */
 
 public interface IreceiptActivityView extends IBaseView {
-    void fillData(List<AddressBean> addressBeen);
+    void fillData(Object o);
 }

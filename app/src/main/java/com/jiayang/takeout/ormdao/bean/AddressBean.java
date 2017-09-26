@@ -47,7 +47,7 @@ public class AddressBean {
 
 
 
-    public AddressBean(String name, String sex, String phone, String receiptAddress, String detailAddress, String label, double longitude, double latitude) {
+    public AddressBean(String name, String sex, String phone, String receiptAddress, String detailAddress, String label) {
         this.name = name;
         this.sex = sex;
         this.phone = phone;
