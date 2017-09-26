@@ -55,4 +55,12 @@ public interface TakeOutService {
      */
     @GET("takeoutService/login")
     Observable<RootNode> login(@Query("phone")String phone, @Query("type")int typeSms);
+
+    /**
+     * 获取用户地址
+     * @param sellerId
+     * @return
+     */
+    @GET("takeoutService/address")
+    Observable<RootNode> getAddress(@Query("userId") long sellerId);
 }

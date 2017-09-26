@@ -62,6 +62,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/ActivityTheme"/>
 
+        <activity
+            android:name=".v.activity.ReceiptActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme"/>
+
     </application>
 
 </manifest>

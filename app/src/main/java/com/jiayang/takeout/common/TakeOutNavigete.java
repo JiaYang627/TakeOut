@@ -6,6 +6,7 @@ import android.content.Intent;
 import com.jiayang.takeout.p.activity.SellerDetailActivityPst;
 import com.jiayang.takeout.utils.userhelper.UserHelper;
 import com.jiayang.takeout.v.activity.LoginActivity;
+import com.jiayang.takeout.v.activity.ReceiptActivity;
 import com.jiayang.takeout.v.activity.SellerDetailActivity;
 import com.jiayang.takeout.v.activity.SettleActivity;
 import com.jiayang.takeout.v.activity.ShopCarActivity;
@@ -55,4 +56,8 @@ public class TakeOutNavigete {
     }
 
 
+    public void goToAddress(Context context) {
+        Intent intent = new Intent(context, ReceiptActivity.class);
+        context.startActivity(intent);
+    }
 }

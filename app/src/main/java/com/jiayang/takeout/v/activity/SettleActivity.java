@@ -83,9 +83,7 @@ public class SettleActivity extends BaseActivity<SettleActivityPst> implements I
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initData();
-        String userInfo = PreferenceTool.getString(Constants.SP_Info.SP_USER_INFO, "");
-        UserBean userBean = JSON.parseObject(userInfo, UserBean.class);
-        LogUtils.e(userBean.login +"");
+
     }
 
     private void initData() {
@@ -124,6 +122,8 @@ public class SettleActivity extends BaseActivity<SettleActivityPst> implements I
                 this.finish();
                 break;
             case R.id.rl_location:
+                // 跳转地址页面
+                mPresenter.goToAddress();
                 break;
             case R.id.tv_submit:
                 break;

@@ -20,4 +20,8 @@ public class SettleActivityPst extends BasePresenter<IsettleActivityView> {
         super(errorListener);
         mTakeOutService = takeOutService;
     }
+
+    public void goToAddress() {
+        mTakeOutNavigete.goToAddress(context);
+    }
 }
