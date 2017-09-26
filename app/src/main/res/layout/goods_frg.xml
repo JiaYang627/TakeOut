@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+
+        <ListView
+            android:id="@+id/goodsLeftListView"
+            android:layout_width="95dp"
+            android:layout_height="match_parent"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0dp"
+            android:scrollbars="none">
+
+        </ListView>
+
+        <se.emilsjolander.stickylistheaders.StickyListHeadersListView
+            android:id="@+id/goodsRightSHLView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"></se.emilsjolander.stickylistheaders.StickyListHeadersListView>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/cart"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|left"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="55dp"
+        android:background="@drawable/circle">
+
+
+        <ImageView
+            android:id="@+id/iv_cart"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@mipmap/seller_detail_cart"
+            android:layout_centerInParent="true"/>
+
+
+        <TextView
+            android:id="@+id/fragment_goods_tv_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/bubble"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="#fff"
+            android:textSize="12sp"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+
+</FrameLayout>

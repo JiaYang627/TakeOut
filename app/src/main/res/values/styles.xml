@@ -1,0 +1,37 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!--ActionBar color-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--StatusBar color-->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--control view checked color-->
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--control view unchecked color-->
+        <!--<item name="colorControlNormal">@color/whiteColor</item>-->
+        <!--Background color-->
+        <!--<item name="android:windowBackground">@color/whiteColor</item>-->
+    </style>
+
+    <style name="ActivityTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+
+
+    </style>
+    <style name="TransparentTheme" parent="AppTheme">
+        <item name="android:windowBackground">@color/transparentColor</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="mainDividerLine" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2dp</item>
+        <item name="android:background">@color/mainBackgroundColor</item>
+    </style>
+
+
+
+</resources>

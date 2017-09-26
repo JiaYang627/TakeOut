@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="30dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:textSize="10sp"
+        android:textColor="#9B9B9B"
+        android:text="手撕包菜饭"
+        android:id="@+id/tv_name"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textSize="10sp"
+        android:textColor="#fdd9d7d7"
+        android:layout_marginRight="20sp"
+        android:layout_toLeftOf="@+id/tv_price"
+        android:text="x2"
+        android:id="@+id/tv_count"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        android:textSize="10sp"
+        android:textColor="#9B9B9B"
+        android:text="￥24"
+        android:id="@+id/tv_price"/>
+
+</RelativeLayout>

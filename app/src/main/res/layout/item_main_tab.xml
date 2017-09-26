@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:skin="http://schemas.android.com/android/skin"
+    android:layout_width="match_parent"
+    android:layout_height="49dp"
+    android:background="@color/whiteColor"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:id="@+id/img"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:scaleType="centerCrop"
+            />
+        <!--扩展文字-->
+        <TextView
+            android:textColor="@drawable/main_text_selector"
+            android:id="@+id/mainTextView"
+            android:textSize="@dimen/textSize14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            />
+    </LinearLayout>
+    <!--&lt;!&ndash;扩展红点上数字显示&ndash;&gt;-->
+    <!--<TextView-->
+        <!--android:id="@+id/redDot"-->
+        <!--android:layout_width="10dp"-->
+        <!--android:layout_height="10dp"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_marginRight="20dp"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:background="@drawable/shape_red_dot"-->
+        <!--android:visibility="gone" />-->
+</RelativeLayout>

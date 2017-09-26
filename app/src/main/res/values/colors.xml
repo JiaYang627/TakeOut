@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FAFAFA</color>
+    <color name="colorPrimaryDark">#3190E8</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorItemBg">#EEEEEE</color>
+
+    <!--通用色-->
+    <color name="whiteColor">#FFFFFF</color>
+    <color name="blackColor">#000000</color>
+    <color name="grayTextColor">#494949</color>
+    <color name="transparentColor">#0000</color>
+    <color name="transparentColor70">#B3000000</color>
+
+    <!-- 字体颜色 -->
+    <color name="blackTextColor">#030303</color>
+
+
+    <!--背景色-->
+    <color name="mainBackgroundColor">#E3E3E3</color>
+
+    <!-- 首页顶部颜色 -->
+    <color name="mainTopColor">#993190E8</color>
+
+    <!-- 首页Tab文字颜色 -->
+    <color name="mainTabText">#28B2ED</color>
+</resources>
