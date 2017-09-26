@@ -90,7 +90,7 @@ public class ReceiptActivity extends BaseActivity<ReceiptActivityPst> implements
             mRvReceiptAddress.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.VERTICAL , false));
         } else {
             ToastUtils.initToast("您需要填写一个地址");
-            mPresenter.goToEditAddress(1);
+            mPresenter.goToEditAddress(-1);
         }
 
 
