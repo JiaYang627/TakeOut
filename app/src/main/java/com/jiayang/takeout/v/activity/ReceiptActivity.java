@@ -55,7 +55,7 @@ public class ReceiptActivity extends BaseActivity<ReceiptActivityPst> implements
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mRvReceiptAddress.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.VERTICAL , false));
+
     }
 
     @Override
@@ -71,6 +71,7 @@ public class ReceiptActivity extends BaseActivity<ReceiptActivityPst> implements
                 this.finish();
                 break;
             case R.id.tv_add_address:
+                mPresenter.goToEditAddress(-1);
                 break;
         }
     }
@@ -79,15 +80,17 @@ public class ReceiptActivity extends BaseActivity<ReceiptActivityPst> implements
     public void fillData(Object o) {
         List<AddressBean> addressBeen = (List<AddressBean>) o;
         if (addressBeen != null && addressBeen.size() > 0) {
+
             if (mAdapter == null) {
                 mAdapter = new MyAdapter(addressBeen);
             } else {
                 mAdapter.setBeen(addressBeen);
             }
             mRvReceiptAddress.setAdapter(mAdapter);
+            mRvReceiptAddress.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.VERTICAL , false));
         } else {
             ToastUtils.initToast("您需要填写一个地址");
-            mPresenter.goToEditAddress();
+            mPresenter.goToEditAddress(1);
         }
 
 
@@ -172,6 +175,7 @@ public class ReceiptActivity extends BaseActivity<ReceiptActivityPst> implements
 //                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //                intent.putExtra("id", data._id);
 //                MyApplication.getContext().startActivity(intent);
+                mPresenter.goToEditAddress(data._id);
             }
 
 

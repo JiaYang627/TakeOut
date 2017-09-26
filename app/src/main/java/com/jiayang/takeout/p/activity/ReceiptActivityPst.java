@@ -85,7 +85,7 @@ public class ReceiptActivityPst extends BasePresenter<IreceiptActivityView> {
             // 获取网络信息记录入库
             List<AddressBean> addressBeen = JSON.parseArray(data, AddressBean.class);
 
-            for(AddressBean item:addressBeen){
+            for (AddressBean item : addressBeen) {
                 create(item);
             }
             findAllByUserId(mUserBean._id);
@@ -94,35 +94,38 @@ public class ReceiptActivityPst extends BasePresenter<IreceiptActivityView> {
 
     /**
      * 添加一条地址记录(将服务器的数据插入到本地数据库中)
+     *
      * @param item
      */
-    public int create(AddressBean item){
-        UserBean userBean=new UserBean();
-        userBean._id=mUserBean._id;
-        item.mUserBean=userBean;
+    public int create(AddressBean item) {
+        UserBean userBean = new UserBean();
+        userBean._id = mUserBean._id;
+        item.mUserBean = userBean;
         try {
-             return dao.create(item);
+            return dao.create(item);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return 0;
     }
+
     /**
      * 用户输入信息添加
      */
-    public void create(String name, String sex, String phone, String receiptAddress, String detailAddress, String label){
+    public void create(String name, String sex, String phone, String receiptAddress, String detailAddress, String label) {
         // 写入本地数据库
-        AddressBean bean=new AddressBean(name,sex,phone,receiptAddress,detailAddress,label);
+        AddressBean bean = new AddressBean(name, sex, phone, receiptAddress, detailAddress, label);
         int i = create(bean);
-        if(i==1){
+        if (i == 1) {
             // 写入本地数据库操作成功
             mView.fillData(i);// 添加地址界面
-        }else{
+        } else {
 //            mView.failed("添加操作失败");
             ToastUtils.initToast("添加操作失败");
         }
         // 发送数据到网络
     }
+
     /**
      * 依据用户标识获取对应的地址信息
      *
@@ -137,11 +140,49 @@ public class ReceiptActivityPst extends BasePresenter<IreceiptActivityView> {
         }
     }
 
-    public void goToEditAddress() {
-        mTakeOutNavigete.goToEditAddress(context);
+    public void findById(int id) {
+        try {
+            AddressBean addressBeen = dao.queryForId(id);
+            mView.fillData(addressBeen);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void update(int id, String name, String sex, String phone, String dx, String detailAddress, String label) {
+        AddressBean bean = new AddressBean(name, sex, phone, dx, detailAddress, label);
+        UserBean user=new UserBean();
+        user._id=mUserBean._id;
+        bean.mUserBean=user;
+        bean._id=id;
+
+        try {
+            int update = dao.update(bean);
+            if(update==1){
+                mView.fillData(update);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void goToEditAddress(int i) {
+        mTakeOutNavigete.goToEditAddress(context, i);
+
     }
 
     public void setType(int type) {
         mType = type;
+    }
+
+
+    public void delete(int id) {
+        try {
+            int i = dao.deleteById(id);
+            if (i == 1) {
+                mView.fillData(i);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

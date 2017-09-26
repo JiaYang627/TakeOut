@@ -31,6 +31,8 @@ import com.jiayang.takeout.v.iview.IreceiptActivityView;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+import static android.R.attr.id;
+
 
 /**
  * Created by 张 奎 on 2017-09-26 15:19.
@@ -69,6 +71,7 @@ public class EditAddressActivity extends BaseActivity<ReceiptActivityPst> implem
     @BindView(R.id.bt_ok)
     Button mBtOk;
     private UserBean mUserBean;
+    private int id;
 
     @Override
     protected void inject(ApiComponent apiComponent) {
@@ -83,45 +86,17 @@ public class EditAddressActivity extends BaseActivity<ReceiptActivityPst> implem
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        init();
     }
 
     @Override
     protected void onResume() {
         mPresenter.setType(2);
         super.onResume();
-        init();
+
     }
 
-    @Override
-    public void fillData(Object o) {
-        // 更新界面
-        if (o instanceof AddressBean) {
-            AddressBean bean = (AddressBean) o;
-            mEtName.setText(bean.name);
-            mEtName.setSelection(bean.name.length());//让光标在最后
 
-            if (!TextUtils.isEmpty(bean.sex)) {
-                if (bean.sex.equals("先生")) {
-                    mRbMan.setChecked(true);
-                } else {
-                    mRbWomen.setChecked(true);
-                }
-            }
-
-            mEtPhone.setText(bean.phone);
-            mTvReceiptAddress.setText(bean.receiptAddress);
-            mEtDetailAddress.setText(bean.detailAddress);
-
-            if (!TextUtils.isEmpty(bean.label)) {
-                int index = getIndexLabel(bean.label);
-                mTvLabel.setText(addressLabels[index]);
-                mTvLabel.setBackgroundColor(bgLabels[index]);
-            }
-        } else {
-            finish();
-        }
-    }
 
     private void init() {
         String userInfo = PreferenceTool.getString(Constants.SP_Info.SP_USER_INFO, "");
@@ -134,18 +109,18 @@ public class EditAddressActivity extends BaseActivity<ReceiptActivityPst> implem
         // 是否有地址的编号传递到编辑界面
         // 如果有，地址的修改或删除
         // 如果没有，添加地址
-//        id = getIntent().getIntExtra("id", -1);
-//        if (id != -1) {
-//            tvTitle.setText("修改地址");
-//            ibDeleteAddress.setVisibility(View.VISIBLE);
-//
-//            // 需要将本地地址信息查询出来，将值设置到界面上
-//            addressPresenter.findById(id);
-//
-//        } else {
-//            tvTitle.setText("新增地址");
-//            ibDeleteAddress.setVisibility(View.INVISIBLE);
-//        }
+        id = getIntent().getIntExtra("id", -1);
+        if (id != -1) {
+            mTvTitle.setText("修改地址");
+            mIbDeleteAddress.setVisibility(View.VISIBLE);
+
+//             需要将本地地址信息查询出来，将值设置到界面上
+            mPresenter.findById(id);
+
+        } else {
+            mTvTitle.setText("新增地址");
+            mIbDeleteAddress.setVisibility(View.INVISIBLE);
+        }
 
     }
 
@@ -188,12 +163,11 @@ public class EditAddressActivity extends BaseActivity<ReceiptActivityPst> implem
                     String detailAddress = mEtDetailAddress.getText().toString().trim();
                     String label = mTvLabel.getText().toString();
 
-//                    if (id != -1) {
-//                        mPresenter.update(id, name, sex, phone, receiptAddress, detailAddress, label, longitude, latitude);
-//                    } else {
-//
-//                    }
-                    mPresenter.create(name, sex, phone, "dx", detailAddress, label);
+                    if (id != -1) {
+                        mPresenter.update(id, name, sex, phone, "dx", detailAddress, label);
+                    } else {
+                        mPresenter.create(name, sex, phone, "dx", detailAddress, label);
+                    }
                 }
                 break;
         }
@@ -232,7 +206,7 @@ public class EditAddressActivity extends BaseActivity<ReceiptActivityPst> implem
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-//                        mPresenter.delete(id);
+                        mPresenter.delete(id);
                     }
                 })
                 .create().show();
@@ -245,8 +219,8 @@ public class EditAddressActivity extends BaseActivity<ReceiptActivityPst> implem
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (which != 0) {
-//                            tvLabel.setText(addressLabels[which]);
-//                            tvLabel.setBackgroundColor(bgLabels[which]);
+                            mTvLabel.setText(addressLabels[which]);
+                            mTvLabel.setBackgroundColor(bgLabels[which]);
                         }
                     }
                 })
@@ -307,5 +281,34 @@ public class EditAddressActivity extends BaseActivity<ReceiptActivityPst> implem
             }
         }
         return index;
+    }
+    @Override
+    public void fillData(Object o) {
+        // 更新界面
+        if (o instanceof AddressBean) {
+            AddressBean bean = (AddressBean) o;
+            mEtName.setText(bean.name);
+            mEtName.setSelection(bean.name.length());//让光标在最后
+
+            if (!TextUtils.isEmpty(bean.sex)) {
+                if (bean.sex.equals("先生")) {
+                    mRbMan.setChecked(true);
+                } else {
+                    mRbWomen.setChecked(true);
+                }
+            }
+
+            mEtPhone.setText(bean.phone);
+            mTvReceiptAddress.setText(bean.receiptAddress);
+            mEtDetailAddress.setText(bean.detailAddress);
+
+            if (!TextUtils.isEmpty(bean.label)) {
+                int index = getIndexLabel(bean.label);
+                mTvLabel.setText(addressLabels[index]);
+                mTvLabel.setBackgroundColor(bgLabels[index]);
+            }
+        } else {
+            finish();
+        }
     }
 }

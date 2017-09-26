@@ -62,8 +62,9 @@ public class TakeOutNavigete {
         context.startActivity(intent);
     }
 
-    public void goToEditAddress(Context context) {
+    public void goToEditAddress(Context context , int id) {
         Intent intent = new Intent(context, EditAddressActivity.class);
+        intent.putExtra("id", id);
         context.startActivity(intent);
     }
 }
