@@ -104,7 +104,7 @@
                     android:ellipsize="end"
                     android:focusable="false"
                     android:maxLines="1"
-                    android:text="黑马程序员 先生 185****7311 中关村"
+                    android:text="测试订单详情"
                     android:textColor="#fd9b9999"
                     android:textSize="13sp" />
 

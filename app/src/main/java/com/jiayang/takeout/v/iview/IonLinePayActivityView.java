@@ -1,5 +1,6 @@
 package com.jiayang.takeout.v.iview;
 
+import com.jiayang.takeout.m.bean.OrderPayInfoVo;
 import com.jiayang.takeout.v.base.IBaseView;
 
 /**
@@ -7,4 +8,5 @@ import com.jiayang.takeout.v.base.IBaseView;
  */
 
 public interface IonLinePayActivityView extends IBaseView {
+    void fillData(OrderPayInfoVo orderPayInfoVo, String orderId);
 }

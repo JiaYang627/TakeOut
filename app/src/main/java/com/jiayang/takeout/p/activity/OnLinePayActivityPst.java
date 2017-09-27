@@ -2,6 +2,8 @@ package com.jiayang.takeout.p.activity;
 
 import android.content.Intent;
 
+import com.alibaba.fastjson.JSON;
+import com.jiayang.takeout.m.bean.OrderPayInfoVo;
 import com.jiayang.takeout.m.bean.RootNode;
 import com.jiayang.takeout.m.rxhelper.ErrorListener;
 import com.jiayang.takeout.m.rxhelper.RequestCallback;
@@ -37,13 +39,16 @@ public class OnLinePayActivityPst extends BasePresenter<IonLinePayActivityView> 
         getOrderPayInfo(orderId);
     }
 
-    private void getOrderPayInfo(String orderId) {
+    private void getOrderPayInfo(final String orderId) {
         mTakeOutService.getOrderPayInfo(orderId)
                 .compose(RxUtils.<RootNode>getSchedulerTransformer())
                 .subscribe(new RequestCallback<RootNode>(this) {
                     @Override
                     public void onNext(@NonNull RootNode rootNode) {
                         super.onNext(rootNode);
+                        String data = rootNode.data;
+                        OrderPayInfoVo orderPayInfoVo = JSON.parseObject(data, OrderPayInfoVo.class);
+                        mView.fillData(orderPayInfoVo , orderId);
                     }
                 });
     }
