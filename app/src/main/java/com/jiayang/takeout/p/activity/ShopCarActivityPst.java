@@ -23,6 +23,6 @@ public class ShopCarActivityPst extends BasePresenter<IshopCarActivityView> {
     }
 
     public void goToSettle() {
-        mTakeOutNavigete.goToSettle(context);
+        mTakeOutNavigate.goToSettle(context);
     }
 }

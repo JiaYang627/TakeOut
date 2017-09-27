@@ -2,23 +2,16 @@ package com.jiayang.takeout.p.fragment;
 
 import android.os.Bundle;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.TypeReference;
 import com.jiayang.takeout.m.bean.RootNode;
 import com.jiayang.takeout.m.bean.goodsFrgVo.GoodsTypeVo;
-import com.jiayang.takeout.m.bean.homeVo.HomeInfo;
 import com.jiayang.takeout.m.rxhelper.ErrorListener;
 import com.jiayang.takeout.m.rxhelper.RequestCallback;
 import com.jiayang.takeout.m.service.TakeOutService;
-import com.jiayang.takeout.p.base.BasePresenter;
 import com.jiayang.takeout.p.base.LazyPresenter;
-import com.jiayang.takeout.utils.LogUtils;
 import com.jiayang.takeout.utils.RxUtils;
-import com.jiayang.takeout.utils.ToastUtils;
 import com.jiayang.takeout.v.iview.IgoodsFragmentView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -73,6 +66,6 @@ public class GoodsFragmentPst extends LazyPresenter<IgoodsFragmentView> {
 
 
     public void goToShopCar() {
-        mTakeOutNavigete.goToShopCar(context);
+        mTakeOutNavigate.goToShopCar(context);
     }
 }

@@ -1,8 +1,6 @@
 package com.jiayang.takeout.v.adapter;
 
-import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +12,6 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.jiayang.takeout.R;
 import com.jiayang.takeout.common.TUApp;
-import com.jiayang.takeout.common.TakeOutNavigete;
 import com.jiayang.takeout.m.bean.homeVo.Category;
 import com.jiayang.takeout.m.bean.homeVo.Head;
 import com.jiayang.takeout.m.bean.homeVo.HomeInfo;
@@ -23,12 +20,8 @@ import com.jiayang.takeout.m.bean.homeVo.Promotion;
 import com.jiayang.takeout.m.bean.homeVo.Seller;
 import com.jiayang.takeout.p.activity.SellerDetailActivityPst;
 import com.jiayang.takeout.v.activity.SellerDetailActivity;
-import com.jiayang.takeout.v.base.BaseFragment;
-import com.jiayang.takeout.v.fragment.HomeFragment;
 import com.jiayang.takeout.widget.ShoppingCartManager;
 import com.squareup.picasso.Picasso;
-
-import javax.inject.Inject;
 
 
 /**

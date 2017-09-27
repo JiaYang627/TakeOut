@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 
-import com.jiayang.takeout.common.TakeOutNavigete;
+import com.jiayang.takeout.common.TakeOutNavigate;
 import com.jiayang.takeout.m.rxhelper.ErrorHelper;
 import com.jiayang.takeout.m.rxhelper.ErrorListener;
 import com.jiayang.takeout.ormdao.DBHelper;
@@ -23,7 +23,7 @@ import javax.inject.Inject;
 
 public class BasePresenter<View extends IBaseView>  implements ErrorListener{
     @Inject
-    protected TakeOutNavigete mTakeOutNavigete;
+    protected TakeOutNavigate mTakeOutNavigate;
 
     public BasePresenter(ErrorListener errorListener) {
         this.errorListener = errorListener;

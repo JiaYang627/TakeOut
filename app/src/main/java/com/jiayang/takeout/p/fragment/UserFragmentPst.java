@@ -25,6 +25,6 @@ public class UserFragmentPst extends BasePresenter<IuserFragmentView> {
     }
 
     public void goToLogin() {
-        mTakeOutNavigete.goToLogin(context);
+        mTakeOutNavigate.goToLogin(context);
     }
 }

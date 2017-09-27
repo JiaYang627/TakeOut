@@ -7,7 +7,6 @@ import com.jiayang.takeout.m.rxhelper.ErrorListener;
 import com.jiayang.takeout.m.service.TakeOutService;
 import com.jiayang.takeout.ormdao.bean.AddressBean;
 import com.jiayang.takeout.p.base.BasePresenter;
-import com.jiayang.takeout.utils.LogUtils;
 import com.jiayang.takeout.v.iview.IsettleActivityView;
 
 import java.sql.SQLException;
@@ -32,7 +31,7 @@ public class SettleActivityPst extends BasePresenter<IsettleActivityView> {
     }
 
     public void goToAddress() {
-        mTakeOutNavigete.goToAddress(context);
+        mTakeOutNavigate.goToAddress(context);
     }
 
     @Override

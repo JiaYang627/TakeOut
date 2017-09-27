@@ -2,7 +2,7 @@ package com.jiayang.takeout.m.model;
 
 import android.app.Application;
 
-import com.jiayang.takeout.common.TakeOutNavigete;
+import com.jiayang.takeout.common.TakeOutNavigate;
 
 import dagger.Module;
 import dagger.Provides;
@@ -26,7 +26,7 @@ public class AppModule {
     }
 
     @Provides
-    TakeOutNavigete provideWyNavigate() {
-        return new TakeOutNavigete();
+    TakeOutNavigate provideWyNavigate() {
+        return new TakeOutNavigate();
     }
 }

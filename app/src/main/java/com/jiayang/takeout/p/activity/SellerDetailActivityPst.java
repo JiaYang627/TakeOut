@@ -2,12 +2,9 @@ package com.jiayang.takeout.p.activity;
 
 import android.content.Intent;
 
-import com.jiayang.takeout.common.TakeOutNavigete;
 import com.jiayang.takeout.m.rxhelper.ErrorListener;
 import com.jiayang.takeout.m.service.TakeOutService;
 import com.jiayang.takeout.p.base.BasePresenter;
-import com.jiayang.takeout.utils.LogUtils;
-import com.jiayang.takeout.utils.ToastUtils;
 import com.jiayang.takeout.v.iview.IsellerDetailActivityView;
 
 import javax.inject.Inject;

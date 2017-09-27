@@ -19,7 +19,7 @@ import com.jiayang.takeout.v.activity.TestActivity;
  * Created by 张 奎 on 2017-09-11 15:13.
  */
 
-public class TakeOutNavigete {
+public class TakeOutNavigate {
 
     private boolean isLogin() {
         return UserHelper.isLogin();
