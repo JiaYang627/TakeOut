@@ -58,10 +58,10 @@ public class BasePresenter<View extends IBaseView>  implements ErrorListener{
     /**
      * 页面跳转 数据回传 Pst写此方法拿回传数据
      * @param requestCode
-     * @param requestCode1
+     * @param resultCode
      * @param data
      */
-    public void onActivityResult(int requestCode, int requestCode1, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
     }
 

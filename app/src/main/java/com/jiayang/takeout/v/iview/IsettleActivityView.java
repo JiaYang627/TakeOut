@@ -1,5 +1,6 @@
 package com.jiayang.takeout.v.iview;
 
+import com.jiayang.takeout.ormdao.bean.AddressBean;
 import com.jiayang.takeout.v.base.IBaseView;
 
 /**
@@ -7,4 +8,5 @@ import com.jiayang.takeout.v.base.IBaseView;
  */
 
 public interface IsettleActivityView extends IBaseView {
+    void fillData(Object object);
 }

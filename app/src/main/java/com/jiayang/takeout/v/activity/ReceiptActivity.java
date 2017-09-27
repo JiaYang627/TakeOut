@@ -198,6 +198,14 @@ public class ReceiptActivity extends BaseActivity<ReceiptActivityPst> implements
                 }
 
                 tvAddress.setText(data.receiptAddress + data.detailAddress);
+
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int id = ViewHolder.this.data._id;
+                        mPresenter.setResult(id);
+                    }
+                });
             }
         }
     }

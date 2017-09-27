@@ -1,9 +1,11 @@
 package com.jiayang.takeout.common;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
 import com.jiayang.takeout.p.activity.SellerDetailActivityPst;
+import com.jiayang.takeout.p.activity.SettleActivityPst;
 import com.jiayang.takeout.utils.userhelper.UserHelper;
 import com.jiayang.takeout.v.activity.EditAddressActivity;
 import com.jiayang.takeout.v.activity.LoginActivity;
@@ -59,12 +61,19 @@ public class TakeOutNavigete {
 
     public void goToAddress(Context context) {
         Intent intent = new Intent(context, ReceiptActivity.class);
-        context.startActivity(intent);
+        ((Activity)context).startActivityForResult(intent , 200);
     }
 
     public void goToEditAddress(Context context , int id) {
         Intent intent = new Intent(context, EditAddressActivity.class);
         intent.putExtra("id", id);
         context.startActivity(intent);
+    }
+
+    public void goToSettleForResult(Context context, int id) {
+        Intent intent = new Intent();
+        intent.putExtra(SettleActivityPst.EXTRA_ADDRESS_ID, id);
+        ((Activity) context).setResult(Activity.RESULT_OK, intent);
+        ((Activity) context).finish();
     }
 }

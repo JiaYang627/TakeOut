@@ -17,6 +17,7 @@ import com.jiayang.takeout.R;
 import com.jiayang.takeout.common.Constants;
 import com.jiayang.takeout.m.bean.goodsFrgVo.GoodsInfoVo;
 import com.jiayang.takeout.m.component.ApiComponent;
+import com.jiayang.takeout.ormdao.bean.AddressBean;
 import com.jiayang.takeout.ormdao.bean.UserBean;
 import com.jiayang.takeout.p.activity.SettleActivityPst;
 import com.jiayang.takeout.utils.LogUtils;
@@ -127,6 +128,20 @@ public class SettleActivity extends BaseActivity<SettleActivityPst> implements I
                 break;
             case R.id.tv_submit:
                 break;
+        }
+    }
+
+    @Override
+    public void fillData(Object object) {
+        if (object instanceof AddressBean) {
+            AddressBean addressBean = (AddressBean) object;
+            mTvSelectAddress.setVisibility(View.GONE);
+            mLlSelectedAddressContainer.setVisibility(View.VISIBLE);
+
+            mTvName.setText(addressBean.name);
+            mTvSex.setText(addressBean.sex);
+            mTvPhone.setText(addressBean.phone);
+            mTvAddress.setText(addressBean.receiptAddress + addressBean.detailAddress);
         }
     }
 }

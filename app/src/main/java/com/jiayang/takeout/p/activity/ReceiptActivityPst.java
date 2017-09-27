@@ -1,5 +1,7 @@
 package com.jiayang.takeout.p.activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSON;
@@ -24,6 +26,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.annotations.NonNull;
+
+import static android.R.attr.id;
 
 /**
  * Created by 张 奎 on 2017-09-26 11:28.
@@ -148,16 +152,17 @@ public class ReceiptActivityPst extends BasePresenter<IreceiptActivityView> {
             e.printStackTrace();
         }
     }
+
     public void update(int id, String name, String sex, String phone, String dx, String detailAddress, String label) {
         AddressBean bean = new AddressBean(name, sex, phone, dx, detailAddress, label);
-        UserBean user=new UserBean();
-        user._id=mUserBean._id;
-        bean.mUserBean=user;
-        bean._id=id;
+        UserBean user = new UserBean();
+        user._id = mUserBean._id;
+        bean.mUserBean = user;
+        bean._id = id;
 
         try {
             int update = dao.update(bean);
-            if(update==1){
+            if (update == 1) {
                 mView.fillData(update);
             }
         } catch (SQLException e) {
@@ -184,5 +189,9 @@ public class ReceiptActivityPst extends BasePresenter<IreceiptActivityView> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setResult(int id) {
+        mTakeOutNavigete.goToSettleForResult(context, id);
     }
 }

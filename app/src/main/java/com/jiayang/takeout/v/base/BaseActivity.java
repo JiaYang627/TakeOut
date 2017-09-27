@@ -50,7 +50,7 @@ public abstract class BaseActivity <T extends BasePresenter> extends AppCompatAc
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        mPresenter.onActivityResult(requestCode, requestCode, data);
+        mPresenter.onActivityResult(requestCode, resultCode, data);
     }
 
     protected abstract void inject(ApiComponent apiComponent);
