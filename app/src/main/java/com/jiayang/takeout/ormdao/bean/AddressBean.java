@@ -12,7 +12,8 @@ import static android.R.attr.id;
 @DatabaseTable(tableName = "t_address")
 public class AddressBean {
 
-    @DatabaseField(id = true)
+    // 自增
+    @DatabaseField(generatedId = true)
     public int _id;
     //foreign = true 是外键 foreignColumnName = "_id"外键存放的是UserBean表中_id 字段
     @DatabaseField(canBeNull = false , foreign = true , foreignColumnName = "_id" , columnName = "user_id")
