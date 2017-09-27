@@ -32,8 +32,7 @@ public class ReceiptActivityPst extends BasePresenter<IreceiptActivityView> {
 
     private TakeOutService mTakeOutService;
 
-    // 地址的增、删、改、查
-    static Dao<AddressBean, Integer> dao;
+
     private UserBean mUserBean;
     private int mType;
 

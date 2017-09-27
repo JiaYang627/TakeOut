@@ -127,6 +127,7 @@ public class SettleActivity extends BaseActivity<SettleActivityPst> implements I
                 mPresenter.goToAddress();
                 break;
             case R.id.tv_submit:
+                mPresenter.goToCreatOrder();
                 break;
         }
     }

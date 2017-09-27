@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 
 
+import com.j256.ormlite.dao.Dao;
 import com.jiayang.takeout.common.TakeOutNavigate;
 import com.jiayang.takeout.m.rxhelper.ErrorHelper;
 import com.jiayang.takeout.m.rxhelper.ErrorListener;
 import com.jiayang.takeout.ormdao.DBHelper;
+import com.jiayang.takeout.ormdao.bean.AddressBean;
 import com.jiayang.takeout.v.base.IBaseView;
 
 import java.lang.ref.Reference;
@@ -24,6 +26,9 @@ import javax.inject.Inject;
 public class BasePresenter<View extends IBaseView>  implements ErrorListener{
     @Inject
     protected TakeOutNavigate mTakeOutNavigate;
+
+    // 地址的增、删、改、查
+    public static Dao<AddressBean, Integer> dao;
 
     public BasePresenter(ErrorListener errorListener) {
         this.errorListener = errorListener;

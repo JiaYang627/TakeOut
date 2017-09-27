@@ -26,13 +26,13 @@ public interface TakeOutService {
 //    Observable<LocationBean> getLocation(@Query("phone") String phoneNumber, @Query("key") String key);
 
 
-
 //    @FormUrlEncoded
 //    @POST("appi/version_update.php")
 //    Observable<VersionVo> getVersionInfo(@Field("") int temp);
 
     /**
      * 获取首页数据
+     *
      * @return
      */
     @GET("takeoutService/home")
@@ -40,6 +40,7 @@ public interface TakeOutService {
 
     /**
      * 获取店铺商品信息
+     *
      * @param sellerId
      * @return
      */
@@ -49,18 +50,39 @@ public interface TakeOutService {
 
     /**
      * 登录
+     *
      * @param phone
      * @param typeSms
      * @return
      */
     @GET("takeoutService/login")
-    Observable<RootNode> login(@Query("phone")String phone, @Query("type")int typeSms);
+    Observable<RootNode> login(@Query("phone") String phone, @Query("type") int typeSms);
 
     /**
      * 获取用户地址
+     *
      * @param sellerId
      * @return
      */
     @GET("takeoutService/address")
     Observable<RootNode> getAddress(@Query("userId") long sellerId);
+
+
+    /**
+     * 提交订单 获取订单编号
+     * @param addressJson
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("takeoutService/order")
+    Observable<RootNode> creatOrder(@Field("orderOverview") Object addressJson);
+
+
+    /**
+     * 请求支付信息
+     * @param orderId
+     * @return
+     */
+    @GET("takeoutService/pay")
+    Observable<RootNode> getOrderPayInfo(@Query("orderId") String orderId);
 }

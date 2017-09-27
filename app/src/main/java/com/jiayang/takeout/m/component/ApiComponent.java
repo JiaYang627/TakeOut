@@ -5,6 +5,7 @@ import com.jiayang.takeout.m.model.ApiModule;
 import com.jiayang.takeout.v.activity.EditAddressActivity;
 import com.jiayang.takeout.v.activity.LoginActivity;
 import com.jiayang.takeout.v.activity.MainActivity;
+import com.jiayang.takeout.v.activity.OnLinePayActivity;
 import com.jiayang.takeout.v.activity.ReceiptActivity;
 import com.jiayang.takeout.v.activity.SellerDetailActivity;
 import com.jiayang.takeout.v.activity.SettleActivity;
@@ -57,4 +58,6 @@ public interface ApiComponent {
     void inject(ReceiptActivity activity);
 
     void inject(EditAddressActivity activity);
+
+    void inject(OnLinePayActivity activity);
 }
