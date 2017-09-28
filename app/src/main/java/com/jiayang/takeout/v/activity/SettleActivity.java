@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
+import com.amap.api.services.core.LatLonPoint;
 import com.bumptech.glide.Glide;
 import com.jiayang.takeout.R;
 import com.jiayang.takeout.common.Constants;
@@ -28,6 +29,7 @@ import com.jiayang.takeout.v.iview.IsettleActivityView;
 import com.jiayang.takeout.widget.ShoppingCartManager;
 import com.jiayang.takeout.widget.imageLoader.ImageLoader;
 
+import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import butterknife.BindView;
@@ -88,6 +90,12 @@ public class SettleActivity extends BaseActivity<SettleActivityPst> implements I
     }
 
     private void initData() {
+        if (Constants.Location.LOCATION != null) {
+            String userInfo = PreferenceTool.getString(Constants.SP_Info.SP_USER_INFO, "");
+            UserBean mUserBean = JSON.parseObject(userInfo, UserBean.class);
+            mPresenter.findAllByUserId(mUserBean._id);
+        }
+
         ImageLoader.loadImageViewFromUrl(ShoppingCartManager.getInstance().url.replace("Takeout", "takeout"), mIvLogo);
         mTvSellerName.setText(ShoppingCartManager.getInstance().name);
 
@@ -144,5 +152,51 @@ public class SettleActivity extends BaseActivity<SettleActivityPst> implements I
             mTvPhone.setText(addressBean.phone);
             mTvAddress.setText(addressBean.receiptAddress + addressBean.detailAddress);
         }
+
+        if (object instanceof List) {
+            // 判断定位点与地址列表中那个记录的距离近（小于500米），将该地址信息作为默认地址
+            List<AddressBean> been = (List<AddressBean>) object;
+            for (AddressBean item : been) {
+                LatLonPoint point = new LatLonPoint(item.latitude, item.longitude);
+                double distance = getDistance(Constants.Location.LOCATION, point);
+                if (distance < 500) {
+                    // 该条目为默认地址
+                    // 修改界面
+                    mTvSelectAddress.setVisibility(View.GONE);
+                    mLlSelectedAddressContainer.setVisibility(View.VISIBLE);
+
+
+                    mTvName.setText(item.name);
+                    mTvSex.setText(item.sex);
+                    mTvPhone.setText(item.phone);
+                    mTvAddress.setText(item.receiptAddress + item.detailAddress);
+                }
+            }
+        }
+    }
+
+    /*
+    * 计算两点之间距离
+    *
+    * @param start
+    *
+    * @param end
+    *
+    * @return 米
+    */
+    public double getDistance(LatLonPoint start, LatLonPoint end) {
+
+        double lon1 = (Math.PI / 180) * start.getLongitude();
+        double lon2 = (Math.PI / 180) * end.getLongitude();
+        double lat1 = (Math.PI / 180) * start.getLatitude();
+        double lat2 = (Math.PI / 180) * end.getLatitude();
+
+        // 地球半径
+        double R = 6371;
+
+        // 两点间距离 km，如果想要米的话，结果*1000就可以了
+        double d = Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon2 - lon1)) * R;
+
+        return d * 1000;
     }
 }

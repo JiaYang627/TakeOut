@@ -44,7 +44,9 @@ public abstract class BaseFragment <T extends BasePresenter> extends AppCompatDi
         super.onCreate(savedInstanceState);
         inject(((TUApp)getActivity().getApplication()).getApiComponent());
         mPresenter.attachView(this);
-
+        mPresenter.getContext(getActivity());
+        mPresenter.getData(getActivity().getIntent());
+        mPresenter.getArguments(getArguments());
 
     }
     protected abstract void inject(ApiComponent apiComponent);
@@ -52,9 +54,6 @@ public abstract class BaseFragment <T extends BasePresenter> extends AppCompatDi
     @Override
     public void onResume() {
         super.onResume();
-        mPresenter.getContext(getActivity());
-        mPresenter.getData(getActivity().getIntent());
-        mPresenter.getArguments(getArguments());
         mPresenter.onTakeView();
     }
     @Override

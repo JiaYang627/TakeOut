@@ -72,6 +72,8 @@ public class EditAddressActivity extends BaseActivity<ReceiptActivityPst> implem
     Button mBtOk;
     private UserBean mUserBean;
     private int id;
+    private double mLatitude;
+    private double mLongitude;
 
     @Override
     protected void inject(ApiComponent apiComponent) {
@@ -93,6 +95,22 @@ public class EditAddressActivity extends BaseActivity<ReceiptActivityPst> implem
     protected void onResume() {
         mPresenter.setType(2);
         super.onResume();
+
+        if (Constants.Location.isChange) {
+            mTvReceiptAddress.setText(Constants.Location.TITLE + "\r\n" + Constants.Location.SNIPPET);
+
+            // 纬度
+            mLatitude = Constants.Location.LATITUDE;
+            // 经度
+            mLongitude = Constants.Location.LONGITUDE;
+
+
+            Constants.Location.isChange = false;
+            Constants.Location.TITLE = "";
+            Constants.Location.SNIPPET = "";
+            Constants.Location.LONGITUDE = 0;
+            Constants.Location.LATITUDE = 0;
+        }
 
     }
 
@@ -124,13 +142,14 @@ public class EditAddressActivity extends BaseActivity<ReceiptActivityPst> implem
 
     }
 
-    @OnClick({R.id.ib_back, R.id.ib_delete_address, R.id.ib_delete_phone, R.id.bt_ok, R.id.ib_select_label})
+    @OnClick({R.id.ib_back, R.id.ib_delete_address, R.id.ib_delete_phone, R.id.bt_ok, R.id.ib_select_label ,R.id.tv_receipt_address})
     public void onClick(View view) {
         switch (view.getId()) {
-//            case R.id.tv_receipt_address:
-////                Intent intent = new Intent(this, SelectLocationActivity.class);
-////                startActivityForResult(intent, 200);
-//                break;
+            case R.id.tv_receipt_address:
+//                Intent intent = new Intent(this, SelectLocationActivity.class);
+//                startActivityForResult(intent, 200);
+                mPresenter.goToLocation();
+                break;
 
             case R.id.ib_back:
                 break;
@@ -159,14 +178,14 @@ public class EditAddressActivity extends BaseActivity<ReceiptActivityPst> implem
                             break;
                     }
                     String phone = mEtPhone.getText().toString().trim();
-//                    String receiptAddress = mTvReceiptAddress.getText().toString().trim();
+                    String receiptAddress = mTvReceiptAddress.getText().toString().trim();
                     String detailAddress = mEtDetailAddress.getText().toString().trim();
                     String label = mTvLabel.getText().toString();
 
                     if (id != -1) {
-                        mPresenter.update(id, name, sex, phone, "dx", detailAddress, label);
+                        mPresenter.update(id, name, sex, phone, receiptAddress, detailAddress, label , mLongitude , mLatitude);
                     } else {
-                        mPresenter.create(name, sex, phone, "dx", detailAddress, label);
+                        mPresenter.create(name, sex, phone, receiptAddress, detailAddress, label, mLongitude , mLatitude);
                     }
                 }
                 break;
@@ -253,11 +272,11 @@ public class EditAddressActivity extends BaseActivity<ReceiptActivityPst> implem
             Toast.makeText(this, "请填写合法的手机号", Toast.LENGTH_SHORT).show();
             return false;
         }
-//        String receiptAddress = mTvReceiptAddress.getText().toString().trim();
-//        if (TextUtils.isEmpty(receiptAddress)) {
-//            Toast.makeText(this, "请填写收获地址", Toast.LENGTH_SHORT).show();
-//            return false;
-//        }
+        String receiptAddress = mTvReceiptAddress.getText().toString().trim();
+        if (TextUtils.isEmpty(receiptAddress)) {
+            Toast.makeText(this, "请填写收获地址", Toast.LENGTH_SHORT).show();
+            return false;
+        }
         String address = mEtDetailAddress.getText().toString().trim();
         if (TextUtils.isEmpty(address)) {
             Toast.makeText(this, "请填写详细地址", Toast.LENGTH_SHORT).show();

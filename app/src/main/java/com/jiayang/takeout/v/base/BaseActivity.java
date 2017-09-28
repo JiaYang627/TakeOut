@@ -35,15 +35,14 @@ public abstract class BaseActivity <T extends BasePresenter> extends AppCompatAc
         mPresenter.attachView(this);
         setContentView(getLayoutId());
         unbinder = ButterKnife.bind(this);
-
+        mPresenter.setDBHelper(DBHelper.getInstance());
+        mPresenter.getContext(context);             //此方法是给P 传递 当前Act的上下文 必须写在getData前面
+        mPresenter.getData(getIntent());
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mPresenter.getContext(context);             //此方法是给P 传递 当前Act的上下文 必须写在getData前面
-        mPresenter.getData(getIntent());
-        mPresenter.setDBHelper(DBHelper.getInstance());
         mPresenter.onTakeView();
     }
 

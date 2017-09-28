@@ -1,5 +1,7 @@
 package com.jiayang.takeout.common;
 
+import com.amap.api.services.core.LatLonPoint;
+
 /**
  * 全局常量类
  */
@@ -49,5 +51,7 @@ public class Constants {
         public static String SNIPPET = "";
         public static double LATITUDE = 0;
         public static double LONGITUDE = 0;
+
+        public static LatLonPoint LOCATION = null;
     }
 }

@@ -24,6 +24,7 @@ import com.jiayang.takeout.widget.ShoppingCartManager;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -74,6 +75,26 @@ public class SettleActivityPst extends BasePresenter<IsettleActivityView> {
         }
     }
 
+    /**
+     * 依据用户标识获取对应的地址信息
+     *
+     * @param userId
+     */
+    public void findAllByUserId(int userId) {
+        try {
+            if (dao == null) {
+                try {
+                    dao = mDBHelper.getDao(AddressBean.class);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            List<AddressBean> addressBeen = dao.queryForEq("user_id", userId);
+            mView.fillData(addressBeen);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public void findById(int id) {
         try {
             AddressBean addressBeen = dao.queryForId(id);

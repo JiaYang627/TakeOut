@@ -55,7 +55,6 @@ public class LocationActivity extends BaseActivity<LocationActivityPst> implemen
     private OnLocationChangedListener mListener;
     private AMapLocationClient mlocationClient;
     private AMapLocationClientOption mLocationOption;
-    private LatLonPoint mLatLonPoint;
     private PoiSearch.Query mQuery;
     private List<PoiItem> poiItems;// poi数据
     private MyAdapter adapter;
@@ -189,7 +188,7 @@ public class LocationActivity extends BaseActivity<LocationActivityPst> implemen
                 mlocationClient.stopLocation();
 //                // 查询附近信息
 //
-                mLatLonPoint = new LatLonPoint(aMapLocation.getLatitude(), aMapLocation.getLongitude());
+                Constants.Location.LOCATION= new LatLonPoint(aMapLocation.getLatitude(), aMapLocation.getLongitude());
                 doSearchQuery(aMapLocation.getCity());
 
 
@@ -206,11 +205,11 @@ public class LocationActivity extends BaseActivity<LocationActivityPst> implemen
         mQuery.setPageSize(20);// 设置每页最多返回多少条poiitem
         mQuery.setPageNum(0);// 设置查第一页
 
-        if (mLatLonPoint != null) {
+        if (Constants.Location.LOCATION != null) {
             PoiSearch poiSearch = new PoiSearch(this, mQuery);
             poiSearch.setOnPoiSearchListener(this);
-            poiSearch.setBound(new PoiSearch.SearchBound(mLatLonPoint, 500, true));//
-            // 设置搜索区域为以 mLatLonPoint 点为圆心，其周围500米范围
+            poiSearch.setBound(new PoiSearch.SearchBound(Constants.Location.LOCATION, 500, true));//
+            // 设置搜索区域为以 Constants.Location.LOCATION 点为圆心，其周围500米范围
             poiSearch.searchPOIAsyn();// 异步搜索
         }
     }

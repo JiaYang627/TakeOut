@@ -110,9 +110,9 @@ public class ReceiptActivityPst extends BasePresenter<IreceiptActivityView> {
     /**
      * 用户输入信息添加
      */
-    public void create(String name, String sex, String phone, String receiptAddress, String detailAddress, String label) {
+    public void create(String name, String sex, String phone, String receiptAddress, String detailAddress, String label, double longitude, double latitude) {
         // 写入本地数据库
-        AddressBean bean = new AddressBean(name, sex, phone, receiptAddress, detailAddress, label);
+        AddressBean bean = new AddressBean(name, sex, phone, receiptAddress, detailAddress, label ,longitude ,latitude);
         int i = create(bean);
         if (i == 1) {
             // 写入本地数据库操作成功
@@ -147,8 +147,8 @@ public class ReceiptActivityPst extends BasePresenter<IreceiptActivityView> {
         }
     }
 
-    public void update(int id, String name, String sex, String phone, String dx, String detailAddress, String label) {
-        AddressBean bean = new AddressBean(name, sex, phone, dx, detailAddress, label);
+    public void update(int id, String name, String sex, String phone, String dx, String detailAddress, String label, double longitude, double latitude) {
+        AddressBean bean = new AddressBean(name, sex, phone, dx, detailAddress, label ,longitude ,latitude);
         UserBean user = new UserBean();
         user._id = mUserBean._id;
         bean.mUserBean = user;
@@ -187,5 +187,9 @@ public class ReceiptActivityPst extends BasePresenter<IreceiptActivityView> {
 
     public void setResult(int id) {
         mTakeOutNavigate.goToSettleForResult(context, id);
+    }
+
+    public void goToLocation() {
+        mTakeOutNavigate.goToLocation(context);
     }
 }
