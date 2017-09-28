@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="15dp"
+        android:layout_height="25dp"
+        android:layout_margin="20dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/address_position_icon"/>
+    
+    <LinearLayout
+        android:layout_gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:text="标题"
+            android:id="@+id/tv_title"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textSize="14sp"
+            android:textColor="#d6d5d5"
+            android:layout_marginTop="5dp"
+            android:text="详细地址"
+            android:id="@+id/tv_snippet"/>
+    </LinearLayout>
+
+</LinearLayout>
