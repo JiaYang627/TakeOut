@@ -42,4 +42,12 @@ public class Constants {
         public static final String NEED_CHECK_MONITOR = "isSimulatorBanned";//是否开启模拟器识别
         public static final String FORCEUPDATE_DOWNLOAD_STATE="isDownloadState";//是否下载完成状态
     }
+
+    public static class Location{
+        public static boolean isChange = false;
+        public static String TITLE = "";
+        public static String SNIPPET = "";
+        public static double LATITUDE = 0;
+        public static double LONGITUDE = 0;
+    }
 }

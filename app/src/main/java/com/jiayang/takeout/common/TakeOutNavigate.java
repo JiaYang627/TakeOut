@@ -9,6 +9,7 @@ import com.jiayang.takeout.p.activity.SellerDetailActivityPst;
 import com.jiayang.takeout.p.activity.SettleActivityPst;
 import com.jiayang.takeout.utils.userhelper.UserHelper;
 import com.jiayang.takeout.v.activity.EditAddressActivity;
+import com.jiayang.takeout.v.activity.LocationActivity;
 import com.jiayang.takeout.v.activity.LoginActivity;
 import com.jiayang.takeout.v.activity.OnLinePayActivity;
 import com.jiayang.takeout.v.activity.ReceiptActivity;
@@ -82,6 +83,11 @@ public class TakeOutNavigate {
     public void goToOnlinePay(Context context, String orderId) {
         Intent intent = new Intent(context, OnLinePayActivity.class);
         intent.putExtra(OnLinePayActivityPst.EXTRA_ORDER_ID, orderId);
+        context.startActivity(intent);
+    }
+
+    public void goToLocation(Context context) {
+        Intent intent = new Intent(context, LocationActivity.class);
         context.startActivity(intent);
     }
 }

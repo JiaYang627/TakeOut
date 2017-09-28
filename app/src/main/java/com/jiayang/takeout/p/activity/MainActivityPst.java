@@ -17,13 +17,11 @@ public class MainActivityPst extends BasePresenter<ImainAcitivityView> {
     private TakeOutService takeOutService;
 
 
-
     @Inject
     public MainActivityPst(ErrorListener errorListener, TakeOutService takeOutService) {
         super(errorListener);
         this.takeOutService = takeOutService;
     }
-
 
 
 }

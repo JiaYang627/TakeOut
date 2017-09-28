@@ -7,15 +7,21 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS"/>
     <uses-permission android:name="android.permission.READ_SMS"/>
     <uses-permission android:name="android.permission.GET_TASKS"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+
+    <!-- 定位权限 -->
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
-
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:name=".common.TUApp"
@@ -28,6 +34,13 @@
             android:name="com.jiayang.takeout.widget.imageLoader.ConfigGlide"
             android:value="GlideModule"/>
 
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="f4771f77e5d9e5272d24c90d45448f19"/>
+
+        <!-- 定位的服务 -->
+        <!-- 定位需要的服务 使用2.0的定位需要加上这个 -->
+        <service android:name="com.amap.api.location.APSService"/>
 
         <activity
             android:name=".v.activity.MainActivity"
@@ -79,8 +92,12 @@
         <activity
             android:name=".v.activity.OnLinePayActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ActivityTheme"
-            />
+            android:theme="@style/ActivityTheme"/>
+
+        <activity
+            android:name=".v.activity.LocationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme"/>
 
         <!-- alipay sdk begin -->
         <activity
@@ -88,7 +105,7 @@
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
             android:screenOrientation="behind"
-            android:windowSoftInputMode="adjustResize|stateHidden" >
+            android:windowSoftInputMode="adjustResize|stateHidden">
         </activity>
         <!-- alipay sdk end -->
 

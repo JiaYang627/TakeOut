@@ -1,5 +1,6 @@
 package com.jiayang.takeout.v.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatDialogFragment;
@@ -68,5 +69,11 @@ public abstract class BaseFragment <T extends BasePresenter> extends AppCompatDi
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         mPresenter.onHiddenChanged(hidden);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        mPresenter.onActivityResult(requestCode ,resultCode ,data);
     }
 }

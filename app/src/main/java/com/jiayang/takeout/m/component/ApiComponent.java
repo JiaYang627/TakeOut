@@ -3,6 +3,7 @@ package com.jiayang.takeout.m.component;
 
 import com.jiayang.takeout.m.model.ApiModule;
 import com.jiayang.takeout.v.activity.EditAddressActivity;
+import com.jiayang.takeout.v.activity.LocationActivity;
 import com.jiayang.takeout.v.activity.LoginActivity;
 import com.jiayang.takeout.v.activity.MainActivity;
 import com.jiayang.takeout.v.activity.OnLinePayActivity;
@@ -60,4 +61,6 @@ public interface ApiComponent {
     void inject(EditAddressActivity activity);
 
     void inject(OnLinePayActivity activity);
+
+    void inject(LocationActivity activity);
 }

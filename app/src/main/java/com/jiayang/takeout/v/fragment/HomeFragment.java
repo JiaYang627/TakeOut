@@ -12,17 +12,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jiayang.takeout.R;
+import com.jiayang.takeout.common.Constants;
 import com.jiayang.takeout.m.bean.homeVo.HomeInfo;
 import com.jiayang.takeout.m.component.ApiComponent;
-import com.jiayang.takeout.p.base.BasePresenter;
 import com.jiayang.takeout.p.fragment.HomeFragmentPst;
-import com.jiayang.takeout.utils.LogUtils;
 import com.jiayang.takeout.v.adapter.HomeRecyclerViewAdapter;
 import com.jiayang.takeout.v.base.BaseFragment;
 import com.jiayang.takeout.v.iview.IhomeFragmentView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
@@ -73,6 +73,17 @@ public class HomeFragment extends BaseFragment<HomeFragmentPst> implements Ihome
 //            LogUtils.e("HomeFragment ===============================onResume");
         }
         isFirst = false;
+
+
+        if (Constants.Location.isChange) {
+            mHomeTextAddress.setText(Constants.Location.TITLE);
+
+            Constants.Location.isChange = false;
+            Constants.Location.TITLE = "";
+            Constants.Location.SNIPPET = "";
+            Constants.Location.LONGITUDE = 0;
+            Constants.Location.LATITUDE = 0;
+        }
     }
 
     @Override
@@ -99,7 +110,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentPst> implements Ihome
 
     private void initRecycler() {
         mHomeRecyclerView.setAdapter(mAdapter);
-        mHomeRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext() , LinearLayoutManager.VERTICAL , false));
+        mHomeRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
     }
 
     private void initListener() {
@@ -127,6 +138,12 @@ public class HomeFragment extends BaseFragment<HomeFragmentPst> implements Ihome
     @Override
     public void fillData(HomeInfo homeInfo) {
         mAdapter.setData(homeInfo);
+    }
+
+    @OnClick(R.id.homeTextAddress)
+    public void onViewClicked() {
+        mPresenter.goToLocation();
+
     }
 
 }

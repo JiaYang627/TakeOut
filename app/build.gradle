@@ -2,12 +2,13 @@ apply plugin: 'com.android.application'
 
 
 def globalConfiguration = rootProject.extensions.getByName("ext")
+
+def Properties props = new Properties()
+props.load(new FileInputStream(file("signing.properties")))
 android {
+
     compileSdkVersion globalConfiguration.getAt("ANDROID_COMPILE_SDK_VERSION") as int
     buildToolsVersion globalConfiguration.getAt("ANDROID_BUILD_TOOLS_VERSION")
-
-
-
     defaultConfig {
         applicationId "com.jiayang.takeout"
         minSdkVersion globalConfiguration.getAt("ANDROID_BUILD_MIN_SDK_VERSION") as int
@@ -20,6 +21,18 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file(props['KEYSTORE_FILE'])
+            storePassword props['KEYSTORE_PASSWORD']
+            keyAlias props['KEY_ALIAS']
+            keyPassword props['KEY_PASSWORD']
         }
     }
 }
@@ -55,7 +68,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.6.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
     // recyclerview引入
-    compile 'com.android.support:recyclerview-v7:24.1.1'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
     // slider图片展示
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.daimajia.slider:library:1.1.5@aar'
@@ -65,4 +78,7 @@ dependencies {
     //联动
     compile 'se.emilsjolander:stickylistheaders:2.7.0'
     compile files('libs/alipaysdk.jar')
+    compile files('libs/AMap_2DMap_V2.9.0_20160525.jar')
+    compile files('libs/AMap_Location_V2.4.1_20160414.jar')
+    compile files('libs/AMap_Search_V3.4.0_20160811.jar')
 }
