@@ -95,8 +95,4 @@ public class MyHeadAdapter extends BaseAdapter {
         }
     }
 
-    public void notifily() {
-        headDataSet.size();
-        notifyDataSetChanged();
-    }
 }

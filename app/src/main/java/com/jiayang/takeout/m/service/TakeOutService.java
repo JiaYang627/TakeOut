@@ -70,6 +70,7 @@ public interface TakeOutService {
 
     /**
      * 提交订单 获取订单编号
+     *
      * @param addressJson
      * @return
      */
@@ -80,9 +81,19 @@ public interface TakeOutService {
 
     /**
      * 请求支付信息
+     *
      * @param orderId
      * @return
      */
     @GET("takeoutService/pay")
     Observable<RootNode> getOrderPayInfo(@Query("orderId") String orderId);
+
+    /**
+     * 请求用户订单信息
+     *
+     * @param userId
+     * @return
+     */
+    @GET("takeoutService/order")
+    Observable<RootNode> getOrder(@Query("userId") int userId);
 }
