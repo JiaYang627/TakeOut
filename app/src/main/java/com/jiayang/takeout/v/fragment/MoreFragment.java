@@ -5,15 +5,22 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.Button;
 
 import com.jiayang.takeout.R;
+import com.jiayang.takeout.common.Constants;
 import com.jiayang.takeout.m.component.ApiComponent;
 import com.jiayang.takeout.p.fragment.MoreFragmentPst;
+import com.jiayang.takeout.utils.ToastUtils;
+import com.jiayang.takeout.utils.userhelper.UserHelper;
 import com.jiayang.takeout.v.base.BaseFragment;
 import com.jiayang.takeout.v.iview.ImoreFragmentView;
 
+import java.util.HashMap;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
@@ -22,6 +29,8 @@ import butterknife.Unbinder;
 
 public class MoreFragment extends BaseFragment<MoreFragmentPst> implements ImoreFragmentView {
 
+    @BindView(R.id.buttonView)
+    Button mButtonView;
     private Unbinder mUnbinder;
 
     @Override
@@ -51,5 +60,23 @@ public class MoreFragment extends BaseFragment<MoreFragmentPst> implements Imore
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
+    }
+
+    public void initData() {
+        HashMap<String, String> data = new HashMap<>();
+        data.put("type", "20");
+        data.put("orderId", "1010 8027 3652 5689 39");
+        if (data.size() > 0) {
+            Constants.OrderObserver.getOrderObserver().changeOrderInfo(data);
+        }
+    }
+    @OnClick(R.id.buttonView)
+    public void onViewClicked() {
+        if (UserHelper.isLogin()) {
+            initData();
+            ToastUtils.initToast("订单列表第一条数据订单状态已更新");
+        } else {
+            ToastUtils.initToast("您还未登录");
+        }
     }
 }

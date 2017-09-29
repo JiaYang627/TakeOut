@@ -38,9 +38,11 @@ public class OrderFragmentPst extends BasePresenter<IorderFragmentView> {
         this.mTakeOutService = mTakeOutService;
     }
 
+
+
     @Override
-    public void onTakeView() {
-        super.onTakeView();
+    public void onOnceTakeView() {
+        super.onOnceTakeView();
         String userInfo = PreferenceTool.getString(Constants.SP_Info.SP_USER_INFO, "");
         UserBean userBean = JSON.parseObject(userInfo, UserBean.class);
         if (userBean != null) {

@@ -3,8 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:text="This is MoreFragment"
+
+    <View
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"/>
+
+    <Button
+        android:id="@+id/buttonView"
+        android:text="模拟极光推送，更新订单状态"
+        android:layout_marginTop="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 

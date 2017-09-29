@@ -12,10 +12,15 @@ import com.jiayang.takeout.R;
 import com.jiayang.takeout.common.Constants;
 import com.jiayang.takeout.m.bean.orderFrgVo.GoodsInfo;
 import com.jiayang.takeout.m.bean.orderFrgVo.OrderInfoVo;
+import com.jiayang.takeout.utils.LogUtils;
+import com.jiayang.takeout.v.activity.OrderDetailActivity;
 import com.jiayang.takeout.widget.imageLoader.ImageLoader;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,7 +28,7 @@ import butterknife.ButterKnife;
 /**
  * Created by itheima.
  */
-public class OrderRecyclerViewAdapter extends RecyclerView.Adapter {
+public class OrderRecyclerViewAdapter extends RecyclerView.Adapter implements Observer{
     private List<OrderInfoVo> orders;
 
     public void setOrders(List<OrderInfoVo> orders) {
@@ -31,6 +36,9 @@ public class OrderRecyclerViewAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
+    public OrderRecyclerViewAdapter() {
+        Constants.OrderObserver.getOrderObserver().addObserver(this);
+    }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -48,12 +56,14 @@ public class OrderRecyclerViewAdapter extends RecyclerView.Adapter {
         ((ItemViewHolder) holder).itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(v.getContext(), OrderDetailActivity.class);
-//                Bundle bundle=new Bundle();
-//                bundle.putString("orderId",order.id);
-//                bundle.putString("type",order.type);
-//                intent.putExtras(bundle);
-//                v.getContext().startActivity(intent);
+                Intent intent = new Intent(v.getContext(), OrderDetailActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("orderId",order.id);
+                bundle.putString("type",order.type);
+                intent.putExtras(bundle);
+
+                v.getContext().startActivity(intent);
+//                initData();
             }
         });
     }
@@ -65,6 +75,32 @@ public class OrderRecyclerViewAdapter extends RecyclerView.Adapter {
         }
         return 0;
     }
+
+    @Override
+    public void update(Observable observable, Object data) {
+
+        String orderId = ((HashMap<String, String>) data).get("orderId");
+        String type = ((HashMap<String, String>) data).get("type");
+
+        int position = -1;
+
+        for (int i = 0; i < orders.size(); i++) {
+            OrderInfoVo orderInfoVo = orders.get(i);
+            if (orderInfoVo.id.equals(orderId)) {
+                position = i;
+                orderInfoVo.type = type;
+                break;
+            }
+        }
+
+        if (position != -1) {
+            notifyItemChanged(position);
+        }
+
+
+    }
+
+
 
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {

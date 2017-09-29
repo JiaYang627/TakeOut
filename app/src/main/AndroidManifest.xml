@@ -99,6 +99,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/ActivityTheme"/>
 
+        <activity
+            android:name=".v.activity.OrderDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme"/>
         <!-- alipay sdk begin -->
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"

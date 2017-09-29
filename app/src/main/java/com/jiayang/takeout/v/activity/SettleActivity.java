@@ -36,7 +36,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Created by 张 奎 on 2017-09-24 09:23.
+ * 结算中心
  */
 
 public class SettleActivity extends BaseActivity<SettleActivityPst> implements IsettleActivityView {

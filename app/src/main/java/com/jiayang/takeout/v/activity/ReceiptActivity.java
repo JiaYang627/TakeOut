@@ -171,10 +171,6 @@ public class ReceiptActivity extends BaseActivity<ReceiptActivityPst> implements
             @OnClick(R.id.iv_edit)
             public void onClick(View view) {
 
-//                Intent intent = new Intent(MyApplication.getContext(), EditReceiptAddressActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                intent.putExtra("id", data._id);
-//                MyApplication.getContext().startActivity(intent);
                 mPresenter.goToEditAddress(data._id);
             }
 
