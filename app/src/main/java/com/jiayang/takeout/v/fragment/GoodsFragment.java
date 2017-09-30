@@ -34,7 +34,7 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
 
 /**
- * 懒加载Frg未做细致处理，
+ * 店家详情 店家Frg
  */
 
 public class GoodsFragment extends LazyFragment<GoodsFragmentPst> implements IgoodsFragmentView, AdapterView.OnItemClickListener, AbsListView.OnScrollListener {

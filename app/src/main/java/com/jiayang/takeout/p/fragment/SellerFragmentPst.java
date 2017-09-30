@@ -27,17 +27,11 @@ public class SellerFragmentPst extends LazyPresenter<IsellerFragmentView> {
 
     @Override
     protected void lazyLoad() {
-        LogUtils.e("SellerFragmentPst ===============================lazyLoad");
     }
 
 
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        if (!hidden) {
-            LogUtils.e("SellerFragmentPst ==================1=============onHiddenChanged"  + hidden);
-        } else {
-            LogUtils.e("SellerFragmentPst ==================2=============onHiddenChanged"  + hidden);
-        }
     }
 }

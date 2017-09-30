@@ -3,6 +3,7 @@ package com.jiayang.takeout.p.activity;
 import com.alibaba.fastjson.JSON;
 import com.j256.ormlite.android.AndroidDatabaseConnection;
 import com.j256.ormlite.dao.Dao;
+import com.jiayang.takeout.R;
 import com.jiayang.takeout.common.Constants;
 import com.jiayang.takeout.common.TUApp;
 import com.jiayang.takeout.m.bean.RootNode;
@@ -105,7 +106,7 @@ public class LoginActivityPst extends BasePresenter<IloginActivityView> {
                                     e1.printStackTrace();
                                 }
                             }
-                            ToastUtils.initToast("修改本地数据异常");
+                            ToastUtils.initToast(context.getString(R.string.update_error));
                         }
                     }
                 });

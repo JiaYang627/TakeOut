@@ -24,7 +24,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
- * Created by 张 奎 on 2017-09-10 15:13.
+ * Main 更多Frg
  */
 
 public class MoreFragment extends BaseFragment<MoreFragmentPst> implements ImoreFragmentView {
@@ -74,9 +74,10 @@ public class MoreFragment extends BaseFragment<MoreFragmentPst> implements Imore
     public void onViewClicked() {
         if (UserHelper.isLogin()) {
             initData();
-            ToastUtils.initToast("订单列表第一条数据订单状态已更新");
+            ToastUtils.initToast(getString(R.string.test_push));
+            Constants.TEST_PUSH = true;
         } else {
-            ToastUtils.initToast("您还未登录");
+            ToastUtils.initToast(getString(R.string.no_login));
         }
     }
 }

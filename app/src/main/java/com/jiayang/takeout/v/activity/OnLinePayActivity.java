@@ -43,7 +43,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * 支付页面
+ * 支付页面Act
  */
 
 public class OnLinePayActivity extends BaseActivity<OnLinePayActivityPst> implements IonLinePayActivityView {
@@ -142,7 +142,9 @@ public class OnLinePayActivity extends BaseActivity<OnLinePayActivityPst> implem
 
     @Override
     public void fillData(OrderPayInfoVo orderPayInfoVo, String orderId) {
-        mTvOrderName.setText("第" + orderId + "号订单");
+
+        String couponContent = String.format(context.getString(R.string.order_this_order), orderId);
+        mTvOrderName.setText(couponContent);
         mTvPayMoney.setText("￥" + orderPayInfoVo.money);
 
         if (isFirst) {
@@ -217,7 +219,9 @@ public class OnLinePayActivity extends BaseActivity<OnLinePayActivityPst> implem
             }
             int m = time / 60;
             int s = time % 60;
-            mTvResidualTime.setText("支付剩余时间:" + m + "分" + s + "秒");
+//            mTvResidualTime.setText("支付剩余时间:" + m + "分" + s + "秒");
+            String time =  String.format(context.getString(R.string.order_pay_surplus_time), m,s);
+            mTvResidualTime.setText(time);
             mHandler.postDelayed(this, 999);
         }
     }

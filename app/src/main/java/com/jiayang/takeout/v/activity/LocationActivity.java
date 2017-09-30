@@ -40,7 +40,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * 定位
+ * 定位Act
  */
 
 public class LocationActivity extends BaseActivity<LocationActivityPst> implements IlocationActivityView, LocationSource, AMapLocationListener, PoiSearch.OnPoiSearchListener {

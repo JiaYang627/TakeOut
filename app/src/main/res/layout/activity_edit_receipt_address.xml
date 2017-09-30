@@ -27,7 +27,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/ib_back"
-            android:text="新增地址"
+            android:text="@string/order_add_address"
             android:textColor="#fff"
             android:textSize="20sp"
             android:layout_weight="1"/>
@@ -55,7 +55,7 @@
             android:textColor="#000"
             android:layout_centerVertical="true"
             android:textSize="12sp"
-            android:text="联系人"/>
+            android:text="@string/contactperson"/>
 
         <EditText
             android:id="@+id/et_name"
@@ -66,7 +66,7 @@
             android:maxLines="1"
             android:textSize="14sp"
             android:background="@null"
-            android:hint="你的姓名"/>
+            android:hint="@string/order_name"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -88,14 +88,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:text="先生"/>
+                android:text="@string/man"/>
             <RadioButton
                 android:id="@+id/rb_women"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:textSize="14sp"
-                android:text="女士"/>
+                android:text="@string/woman"/>
         </RadioGroup>
     </RelativeLayout>
     <LinearLayout

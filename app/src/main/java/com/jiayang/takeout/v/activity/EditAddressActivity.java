@@ -35,7 +35,7 @@ import static android.R.attr.id;
 
 
 /**
- * Created by 张 奎 on 2017-09-26 15:19.
+ * 修改、新增地址Act
  */
 
 public class EditAddressActivity extends BaseActivity<ReceiptActivityPst> implements IreceiptActivityView {
@@ -129,14 +129,14 @@ public class EditAddressActivity extends BaseActivity<ReceiptActivityPst> implem
         // 如果没有，添加地址
         id = getIntent().getIntExtra("id", -1);
         if (id != -1) {
-            mTvTitle.setText("修改地址");
+            mTvTitle.setText(getString(R.string.user_edit_address));
             mIbDeleteAddress.setVisibility(View.VISIBLE);
 
 //             需要将本地地址信息查询出来，将值设置到界面上
             mPresenter.findById(id);
 
         } else {
-            mTvTitle.setText("新增地址");
+            mTvTitle.setText(getString(R.string.user_add_address));
             mIbDeleteAddress.setVisibility(View.INVISIBLE);
         }
 
@@ -171,10 +171,10 @@ public class EditAddressActivity extends BaseActivity<ReceiptActivityPst> implem
                     int checkedRadioButtonId = mRgSex.getCheckedRadioButtonId();
                     switch (checkedRadioButtonId) {
                         case R.id.rb_man:
-                            sex = "先生";
+                            sex = getString(R.string.man);
                             break;
                         case R.id.rb_women:
-                            sex = "女士";
+                            sex = getString(R.string.woman);
                             break;
                     }
                     String phone = mEtPhone.getText().toString().trim();
@@ -219,10 +219,10 @@ public class EditAddressActivity extends BaseActivity<ReceiptActivityPst> implem
      */
     private void showDeleteAlert() {
         new AlertDialog.Builder(this)
-                .setTitle("删除地址")
-                .setMessage("确定要删除地址吗？")
-                .setNegativeButton("取消", null)
-                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                .setTitle(getString(R.string.delect_address))
+                .setMessage(getString(R.string.sure_delect_address))
+                .setNegativeButton(getString(R.string.cancle), null)
+                .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         mPresenter.delete(id);
@@ -233,7 +233,7 @@ public class EditAddressActivity extends BaseActivity<ReceiptActivityPst> implem
 
     private void showLabelAlert() {
         new AlertDialog.Builder(this)
-                .setTitle("选择标签")
+                .setTitle(getString(R.string.choose_label))
                 .setItems(addressLabels, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -246,7 +246,7 @@ public class EditAddressActivity extends BaseActivity<ReceiptActivityPst> implem
                 .create().show();
     }
 
-    String[] addressLabels = new String[]{"无", "家", "公司", "学校"};
+    String[] addressLabels = new String[]{Constants.ADDRESS_NO, Constants.ADDRESS_HOME, Constants.ADDRESS_COMPANY, Constants.ADDRESS_SCHOOL};
     int[] bgLabels = new int[]{
             0,
             Color.parseColor("#fc7251"),//家  橙色
@@ -260,26 +260,26 @@ public class EditAddressActivity extends BaseActivity<ReceiptActivityPst> implem
     public boolean checkReceiptAddressInfo() {
         String name = mEtName.getText().toString().trim();
         if (TextUtils.isEmpty(name)) {
-            Toast.makeText(this, "请填写联系人", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.edit_user), Toast.LENGTH_SHORT).show();
             return false;
         }
         String phone = mEtPhone.getText().toString().trim();
         if (TextUtils.isEmpty(phone)) {
-            Toast.makeText(this, "请填写手机号码", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.edit_user_phone), Toast.LENGTH_SHORT).show();
             return false;
         }
         if (!isMobileNO(phone)) {
-            Toast.makeText(this, "请填写合法的手机号", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.edit_validity_phone), Toast.LENGTH_SHORT).show();
             return false;
         }
         String receiptAddress = mTvReceiptAddress.getText().toString().trim();
         if (TextUtils.isEmpty(receiptAddress)) {
-            Toast.makeText(this, "请填写收获地址", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.edit_user_address), Toast.LENGTH_SHORT).show();
             return false;
         }
         String address = mEtDetailAddress.getText().toString().trim();
         if (TextUtils.isEmpty(address)) {
-            Toast.makeText(this, "请填写详细地址", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.edit_user_detail_address), Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -310,7 +310,7 @@ public class EditAddressActivity extends BaseActivity<ReceiptActivityPst> implem
             mEtName.setSelection(bean.name.length());//让光标在最后
 
             if (!TextUtils.isEmpty(bean.sex)) {
-                if (bean.sex.equals("先生")) {
+                if (bean.sex.equals(getString(R.string.man))) {
                     mRbMan.setChecked(true);
                 } else {
                     mRbWomen.setChecked(true);

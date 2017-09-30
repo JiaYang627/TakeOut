@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 
 import com.alibaba.fastjson.JSON;
+import com.jiayang.takeout.R;
 import com.jiayang.takeout.common.Constants;
 import com.jiayang.takeout.m.bean.Cart;
 import com.jiayang.takeout.m.bean.OrderOverview;
@@ -136,7 +137,7 @@ public class SettleActivityPst extends BasePresenter<IsettleActivityView> {
                         }
                     });
         } else {
-            ToastUtils.initToast("请选择配送地址");
+            ToastUtils.initToast(context.getString(R.string.choose_address));
         }
     }
 

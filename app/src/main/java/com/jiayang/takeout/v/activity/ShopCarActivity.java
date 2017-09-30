@@ -35,7 +35,7 @@ import butterknife.OnClick;
 import static android.R.attr.data;
 
 /**
- * Created by 张 奎 on 2017-09-20 17:16.
+ * 购物车Act
  */
 
 public class ShopCarActivity extends BaseActivity<ShopCarActivityPst> implements IshopCarActivityView {
@@ -73,7 +73,7 @@ public class ShopCarActivity extends BaseActivity<ShopCarActivityPst> implements
     }
 
     private void initToolBar() {
-        mToolbar.setTitle("购物车");
+        mToolbar.setTitle(getString(R.string.order_shop_car));
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

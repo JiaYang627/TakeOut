@@ -36,7 +36,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * 结算中心
+ * 结算中心Act
  */
 
 public class SettleActivity extends BaseActivity<SettleActivityPst> implements IsettleActivityView {
@@ -119,7 +119,7 @@ public class SettleActivity extends BaseActivity<SettleActivityPst> implements I
         // 待支付
 
         double countPrice = ShoppingCartManager.getInstance().getMoney() / 100.0F + ShoppingCartManager.getInstance().sendPrice;
-        mTvCountPrice.setText("待支付" + NumberFormatUtils.formatDigits(countPrice));
+        mTvCountPrice.setText(getString(R.string.order_no_pay) + NumberFormatUtils.formatDigits(countPrice));
 
 
     }

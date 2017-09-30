@@ -16,7 +16,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Created by 张 奎 on 2017-09-22 15:56.
+ * 登录Act
  */
 
 public class LoginActivity extends BaseActivity<LoginActivityPst> implements IloginActivityView {
@@ -49,7 +49,7 @@ public class LoginActivity extends BaseActivity<LoginActivityPst> implements Ilo
 
     @Override
     public void success() {
-        ToastUtils.initToast("登录成功");
+        ToastUtils.initToast(getString(R.string.user_login_success));
         this.finish();
     }
 }

@@ -18,7 +18,7 @@ import com.jiayang.takeout.v.iview.IorderDetailActivityView;
 import butterknife.BindView;
 
 /**
- * 订单详情
+ * 订单详情Act
  */
 
 public class OrderDetailActivity extends BaseActivity<OrderDetailActivityPst> implements IorderDetailActivityView {
@@ -65,6 +65,14 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailActivityPst> im
 
     private void updateUi(String type) {
         int index = getIndex(type);
+
+        for (int i = 0; i < mLlOrderDetailTypeContainer.getChildCount(); i++) {
+            TextView textView = (TextView) mLlOrderDetailTypeContainer.getChildAt(i);
+            ImageView imageView = (ImageView) mLlOrderDetailTypePointContainer.getChildAt(i);
+            textView.setTextColor(getResources().getColor(R.color.grayTextColor));
+            imageView.setImageResource(R.drawable.order_time_node_normal);
+        }
+
 
         if (index != -1) {
             TextView textView = (TextView) mLlOrderDetailTypeContainer.getChildAt(index);

@@ -16,8 +16,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * 懒加载Frg未做细致处理，如果第一个页面 无需写任何东西，第一次请求只在Pst的onOnceTake中写即可。
- * 其余的需在方法中 做处理 并将变量 致为false。
+ * 店家详情 商铺详情Frg
  */
 
 public class SellerFragment extends LazyFragment<SellerFragmentPst> implements IsellerFragmentView{

@@ -2,6 +2,7 @@ package com.jiayang.takeout.p.fragment;
 
 
 import com.alibaba.fastjson.JSON;
+import com.jiayang.takeout.R;
 import com.jiayang.takeout.common.Constants;
 import com.jiayang.takeout.m.bean.RootNode;
 import com.jiayang.takeout.m.bean.orderFrgVo.OrderInfoVo;
@@ -58,7 +59,34 @@ public class OrderFragmentPst extends BasePresenter<IorderFragmentView> {
                         }
                     });
         } else {
-            ToastUtils.initToast("您未登录");
+            ToastUtils.initToast(context.getString(R.string.no_login));
+        }
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
+            if (!Constants.TEST_PUSH) {
+                String userInfo = PreferenceTool.getString(Constants.SP_Info.SP_USER_INFO, "");
+                UserBean userBean = JSON.parseObject(userInfo, UserBean.class);
+                if (userBean != null) {
+                    mTakeOutService.getOrder(userBean._id)
+                            .compose(RxUtils.<RootNode>getSchedulerTransformer())
+                            .subscribe(new RequestCallback<RootNode>(this) {
+                                @Override
+                                public void onNext(@NonNull RootNode rootNode) {
+                                    super.onNext(rootNode);
+                                    String data = rootNode.data;
+                                    List<OrderInfoVo> orderInfoVos = JSON.parseArray(data, OrderInfoVo.class);
+                                    mView.fillData(orderInfoVos);
+                                }
+                            });
+                } else {
+                    ToastUtils.initToast(context.getString(R.string.no_login));
+                }
+            }
+
         }
     }
 }

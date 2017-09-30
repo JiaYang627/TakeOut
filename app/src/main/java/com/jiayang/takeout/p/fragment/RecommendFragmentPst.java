@@ -28,6 +28,5 @@ public class RecommendFragmentPst extends LazyPresenter<IrecommendFragmentView> 
 
     @Override
     protected void lazyLoad() {
-        LogUtils.e("RecommendFragmentPst ===============================lazyLoad");
     }
 }

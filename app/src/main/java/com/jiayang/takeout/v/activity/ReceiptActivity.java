@@ -30,7 +30,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by 张 奎 on 2017-09-26 11:28.
+ * 收货地址Act
  */
 
 public class ReceiptActivity extends BaseActivity<ReceiptActivityPst> implements IreceiptActivityView {
@@ -89,7 +89,7 @@ public class ReceiptActivity extends BaseActivity<ReceiptActivityPst> implements
             mRvReceiptAddress.setAdapter(mAdapter);
             mRvReceiptAddress.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.VERTICAL , false));
         } else {
-            ToastUtils.initToast("您需要填写一个地址");
+            ToastUtils.initToast(getString(R.string.should_add_address));
             mPresenter.goToEditAddress(-1);
         }
 

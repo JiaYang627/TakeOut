@@ -25,7 +25,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
- * Created by 张 奎 on 2017-09-09 09:54.
+ * Main 个人Frg
  */
 
 public class UserFragment extends BaseFragment<UserFragmentPst> implements IuserFragmentView {

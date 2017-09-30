@@ -30,7 +30,7 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
- * Created by 张 奎 on 2017-09-16 09:36.
+ * 店家详情Act
  */
 
 public class SellerDetailActivity extends BaseActivity<SellerDetailActivityPst> implements IsellerDetailActivityView {

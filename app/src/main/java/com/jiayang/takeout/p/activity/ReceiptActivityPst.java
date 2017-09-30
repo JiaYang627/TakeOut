@@ -4,6 +4,7 @@ import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSON;
 import com.j256.ormlite.dao.Dao;
+import com.jiayang.takeout.R;
 import com.jiayang.takeout.common.Constants;
 import com.jiayang.takeout.m.bean.RootNode;
 import com.jiayang.takeout.m.rxhelper.ErrorListener;
@@ -119,7 +120,7 @@ public class ReceiptActivityPst extends BasePresenter<IreceiptActivityView> {
             mView.fillData(i);// 添加地址界面
         } else {
 //            mView.failed("添加操作失败");
-            ToastUtils.initToast("添加操作失败");
+            ToastUtils.initToast(context.getString(R.string.add_error));
         }
         // 发送数据到网络
     }
