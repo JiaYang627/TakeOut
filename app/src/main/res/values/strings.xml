@@ -21,8 +21,12 @@
     <string name="ok">确定</string>
     <string name="choose_label">选择标签</string>
     <string name="should_add_address">您需要填写一个地址</string>
-
-
+    <string name="contactperson">联系人</string>
+    <string name="test_push">订单列表第一条数据订单状态已更新</string>
+    <string name="no_login">您还未登录</string>
+    <string name="update_error">修改本地数据异常</string>
+    <string name="add_error">添加操作失败</string>
+    <string name="choose_address">请选择配送地址</string>
     #=========================================首  页================================================
     <string name="homeAddress">河南省漯河市召陵区</string>
     <string name="homeSearchHint">输入商家、商品名称</string>
@@ -35,7 +39,8 @@
     <string name="order_this_order">第%1$s号订单</string>
     <string name="order_pay_surplus_time">支付剩余时间：%1$d分%2$d秒</string>
     <string name="order_no_pay">待支付</string>
-
+    <string name="order_add_address">新增地址</string>
+    <string name="order_name">请填写收货人姓名</string>
 
     #=========================================个  人================================================
 
@@ -48,14 +53,9 @@
 
     <string name="more_ps">测试</string>
     <string name="order_shop_car">购物车</string>
-    <string name="test_push">订单列表第一条数据订单状态已更新</string>
-    <string name="no_login">您还未登录</string>
-    <string name="update_error">修改本地数据异常</string>
-    <string name="add_error">添加操作失败</string>
-    <string name="choose_address">请选择配送地址</string>
-    <string name="order_add_address">新增地址</string>
-    <string name="order_name">请填写收货人姓名</string>
-    <string name="contactperson">联系人</string>
+
+
+
 
 
 </resources>

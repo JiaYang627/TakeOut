@@ -146,4 +146,7 @@ public class SettleActivityPst extends BasePresenter<IsettleActivityView> {
     }
 
 
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
+    }
 }

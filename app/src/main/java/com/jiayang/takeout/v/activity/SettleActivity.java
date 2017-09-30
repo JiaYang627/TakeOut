@@ -170,6 +170,7 @@ public class SettleActivity extends BaseActivity<SettleActivityPst> implements I
                     mTvSex.setText(item.sex);
                     mTvPhone.setText(item.phone);
                     mTvAddress.setText(item.receiptAddress + item.detailAddress);
+                    mPresenter.setAddressId(item._id);
                 }
             }
         }
