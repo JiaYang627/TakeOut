@@ -1,6 +1,7 @@
 package com.jiayang.takeout.v.activity;
 
 import android.app.Fragment;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -15,6 +16,7 @@ import com.jiayang.takeout.m.component.ApiComponent;
 import com.jiayang.takeout.p.activity.SellerDetailActivityPst;
 import com.jiayang.takeout.p.fragment.GoodsFragmentPst;
 import com.jiayang.takeout.utils.LogUtils;
+import com.jiayang.takeout.utils.UiUtils;
 import com.jiayang.takeout.v.adapter.CommonFragmentAdapter;
 import com.jiayang.takeout.v.base.BaseActivity;
 import com.jiayang.takeout.v.base.BaseFragment;
@@ -85,6 +87,16 @@ public class SellerDetailActivity extends BaseActivity<SellerDetailActivityPst> 
 
     }
 
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+
+        // 计算状态栏的高度
+        Rect outRect = new Rect();
+        this.getWindow().getDecorView().getWindowVisibleDisplayFrame(outRect);
+        UiUtils.STATUE_BAR_HEIGHT = outRect.top;
+    }
 
     private void initFragments() {
         mFragments = new ArrayList<>();
